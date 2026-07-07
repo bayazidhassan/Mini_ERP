@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import MainLayout from '../layouts/MainLayout';
+import AddProductPage from '../pages/AddProductPage';
 import DashboardPage from '../pages/DashboardPage';
 import LoginPage from '../pages/LoginPage';
 import ProductListPage from '../pages/ProductListPage';
@@ -25,6 +26,15 @@ const router = createBrowserRouter([
       {
         path: 'products',
         Component: ProductListPage,
+      },
+      {
+        Component: () => <ProtectedRoute allowedRoles={['admin', 'manager']} />,
+        children: [
+          {
+            path: 'products/add',
+            Component: AddProductPage,
+          },
+        ],
       },
     ],
   },
