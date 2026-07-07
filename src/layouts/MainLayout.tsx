@@ -1,4 +1,10 @@
-import { LayoutDashboard, LogOut, Package, ShoppingCart } from 'lucide-react';
+import {
+  LayoutDashboard,
+  LogOut,
+  Package,
+  ShoppingCart,
+  UserPlus,
+} from 'lucide-react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router';
 import { logout } from '../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
@@ -49,6 +55,12 @@ const MainLayout = () => {
             <ShoppingCart className="h-5 w-5" />
             Create Sale
           </NavLink>
+          {user?.role === 'admin' && (
+            <NavLink to="/users/create" className={navLinkClass}>
+              <UserPlus className="h-5 w-5" />
+              Create User
+            </NavLink>
+          )}
         </nav>
       </aside>
 
