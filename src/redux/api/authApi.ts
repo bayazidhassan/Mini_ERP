@@ -10,7 +10,7 @@ type TLoginResponse = {
   message: string;
   data: {
     safeUser: {
-      _id: string;
+      id: string;
       name: string;
       email: string;
       role: 'admin' | 'manager' | 'employee';
