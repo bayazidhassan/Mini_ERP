@@ -21,9 +21,9 @@ const MainLayout = () => {
     }`;
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex h-screen overflow-hidden bg-gray-50">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-200 shadow-sm">
+      <aside className="w-64 shrink-0 bg-white border-r border-gray-200 shadow-sm overflow-y-auto">
         <div className="flex items-center gap-2 p-6 border-b border-gray-200">
           <Link
             to="/dashboard"
@@ -53,9 +53,9 @@ const MainLayout = () => {
       </aside>
 
       {/* Right Section */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col min-w-0">
         {/* Navbar */}
-        <header className="h-16 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm">
+        <header className="h-16 shrink-0 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm">
           <h1 className="text-xl font-semibold text-gray-800">
             Inventory & Sales Management
           </h1>
@@ -77,7 +77,7 @@ const MainLayout = () => {
         </header>
 
         {/* Page */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 overflow-y-auto p-6">
           <Outlet />
         </main>
       </div>
