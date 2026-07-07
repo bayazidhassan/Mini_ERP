@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import MainLayout from '../layouts/MainLayout';
 import AddProductPage from '../pages/AddProductPage';
 import DashboardPage from '../pages/DashboardPage';
+import EditProductPage from '../pages/EditProductPage';
 import LoginPage from '../pages/LoginPage';
 import ProductListPage from '../pages/ProductListPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
           {
             path: 'products/add',
             Component: AddProductPage,
+          },
+          {
+            path: 'products/edit/:id',
+            Component: EditProductPage,
           },
         ],
       },
