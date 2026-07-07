@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# Mini ERP - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Inventory & Sales Management System frontend built for the MERN Stack Technical Assessment.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- TypeScript
+- React Router
+- Redux Toolkit + RTK Query
+- Tailwind CSS
+- Shadcn/ui
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Login with JWT-based authentication
+- Protected routes with role-based access control (Admin, Manager, Employee)
+- Dashboard with statistics cards and low stock product list
+- Product management: list, add, edit, delete, image upload, search, pagination
+- Sale creation with searchable product selection, quantity input, and automatic total calculation
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18+)
+- Backend API running (see [backend repo](https://github.com/bayazidhassan/Mini_ERP_Backend))
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+   ```
+   git clone https://github.com/bayazidhassan/Mini_ERP.git
+   cd Mini_ERP
+   ```
 
-```
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Create a `.env` file in the root directory:
+   ```
+   VITE_API_URL=http://localhost:5000/api/v1
+   ```
+   For connecting to the live backend instead:
+   ```
+   VITE_API_URL=https://mini-erp-backend-c922.onrender.com/api/v1
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Run the development server:
+   ```
+   npm run dev
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+5. Build for production:
+   ```
+   npm run build
+   ```
 
-```
+## Live Site
+
+https://mini-erp-bd.vercel.app
+
+## Login Credentials (for testing)
+
+- Email: `bayazidhassan776@gmail.com`
+- Password: `12345678`
