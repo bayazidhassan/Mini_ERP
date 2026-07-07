@@ -1,12 +1,31 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { socket } from '@/lib/socket';
 import { AlertTriangle, Package, ShoppingCart } from 'lucide-react';
+import { useEffect } from 'react';
 import {
   useGetDashboardStatsQuery,
   type TLowStockProduct,
 } from '../redux/api/dashboardApi';
 
 const DashboardPage = () => {
-  const { data, isLoading, isError } = useGetDashboardStatsQuery();
+  const { data, isLoading, isError, refetch } = useGetDashboardStatsQuery();
+
+  useEffect(() => {
+    socket.connect();
+
+    socket.on(
+      'lowStock',
+      (alert: { productId: string; name: string; stockQuantity: number }) => {
+        console.log('Low stock alert:', alert);
+        refetch();
+      },
+    );
+
+    return () => {
+      socket.off('lowStock');
+      socket.disconnect();
+    };
+  }, [refetch]);
 
   if (isLoading) {
     return (
