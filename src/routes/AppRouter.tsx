@@ -24,28 +24,30 @@ const router = createBrowserRouter([
             path: 'dashboard',
             Component: DashboardPage,
           },
-        ],
-      },
-      {
-        path: 'products',
-        Component: ProductListPage,
-      },
-      {
-        Component: () => <ProtectedRoute allowedRoles={['admin', 'manager']} />,
-        children: [
           {
-            path: 'products/add',
-            Component: AddProductPage,
+            path: 'products',
+            Component: ProductListPage,
           },
           {
-            path: 'products/edit/:id',
-            Component: EditProductPage,
+            Component: () => (
+              <ProtectedRoute allowedRoles={['admin', 'manager']} />
+            ),
+            children: [
+              {
+                path: 'products/add',
+                Component: AddProductPage,
+              },
+              {
+                path: 'products/edit/:id',
+                Component: EditProductPage,
+              },
+            ],
+          },
+          {
+            path: 'sales/create',
+            Component: CreateSalePage,
           },
         ],
-      },
-      {
-        path: 'sales/create',
-        Component: CreateSalePage,
       },
     ],
   },
