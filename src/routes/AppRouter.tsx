@@ -5,6 +5,7 @@ import CreateSalePage from '../pages/CreateSalePage';
 import DashboardPage from '../pages/DashboardPage';
 import EditProductPage from '../pages/EditProductPage';
 import LoginPage from '../pages/LoginPage';
+import NotFoundPage from '../pages/NotFoundPage';
 import ProductListPage from '../pages/ProductListPage';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         Component: CreateSalePage,
       },
     ],
+  },
+  {
+    path: '*',
+    Component: NotFoundPage,
   },
 ]);
 
