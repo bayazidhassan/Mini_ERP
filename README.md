@@ -10,6 +10,7 @@ Inventory & Sales Management System frontend built for the MERN Stack Technical 
 - Redux Toolkit + RTK Query
 - Tailwind CSS
 - Shadcn/ui
+- Socket.io Client
 
 ## Features
 
@@ -18,6 +19,8 @@ Inventory & Sales Management System frontend built for the MERN Stack Technical 
 - Dashboard with statistics cards and low stock product list
 - Product management: list, add, edit, delete, image upload, search, pagination
 - Sale creation with searchable product selection, quantity input, and automatic total calculation
+- Admin-only Create User page (Manager/Employee account creation)
+- Real-time low stock alerts on Dashboard via Socket.io
 
 ## Getting Started
 
@@ -64,5 +67,6 @@ https://mini-erp-bd.vercel.app
 
 ## Login Credentials (for testing)
 
-- Email: `bayazidhassan776@gmail.com`
-- Password: `12345678`
+- **Admin:** `bayazidhassan776@gmail.com` / `12345678`
+- **Manager:** `bayazidhassan777@gmail.com` / `12345678`
+- **Employee:** `bayazidhassan778@gmail.com` / `12345678`
