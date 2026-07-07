@@ -14,6 +14,7 @@ import {
 } from '@/redux/api/productApi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../redux/hook';
 
 const ProductListPage = () => {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ const ProductListPage = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const limit = 10;
+
+  const { user } = useAppSelector((state) => state.auth);
+  const canManageProducts = user?.role === 'admin' || user?.role === 'manager';
 
   const { data, isLoading, isFetching, isError } = useGetProductsQuery({
     page,
@@ -46,7 +50,9 @@ const ProductListPage = () => {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Products</h1>
-        <Button onClick={() => navigate('/products/add')}>Add Product</Button>
+        {canManageProducts && (
+          <Button onClick={() => navigate('/products/add')}>Add Product</Button>
+        )}
       </div>
 
       <Input
@@ -77,7 +83,9 @@ const ProductListPage = () => {
                 <TableHead>Purchase Price</TableHead>
                 <TableHead>Selling Price</TableHead>
                 <TableHead>Stock</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                {canManageProducts && (
+                  <TableHead className="text-center">Actions</TableHead>
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -106,26 +114,28 @@ const ProductListPage = () => {
                       {product.stockQuantity}
                     </span>
                   </TableCell>
-                  <TableCell className="text-right space-x-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() =>
-                        navigate(`/products/edit/${product._id}`, {
-                          state: { product },
-                        })
-                      }
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="destructive"
-                      onClick={() => handleDelete(product._id)}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
+                  {canManageProducts && (
+                    <TableCell className="text-right space-x-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() =>
+                          navigate(`/products/edit/${product._id}`, {
+                            state: { product },
+                          })
+                        }
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => handleDelete(product._id)}
+                      >
+                        Delete
+                      </Button>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))}
             </TableBody>

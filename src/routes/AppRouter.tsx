@@ -5,6 +5,7 @@ import CreateSalePage from '../pages/CreateSalePage';
 import DashboardPage from '../pages/DashboardPage';
 import EditProductPage from '../pages/EditProductPage';
 import LoginPage from '../pages/LoginPage';
+import NotAuthorizedPage from '../pages/NotAuthorizedPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ProductListPage from '../pages/ProductListPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
           {
             path: 'sales/create',
             Component: CreateSalePage,
+          },
+          {
+            path: 'not-authorized',
+            Component: NotAuthorizedPage,
           },
         ],
       },
