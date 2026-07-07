@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import MainLayout from '../layouts/MainLayout';
 import AddProductPage from '../pages/AddProductPage';
 import CreateSalePage from '../pages/CreateSalePage';
+import CreateUserPage from '../pages/CreateUserPage';
 import DashboardPage from '../pages/DashboardPage';
 import EditProductPage from '../pages/EditProductPage';
 import LoginPage from '../pages/LoginPage';
@@ -47,6 +48,15 @@ const router = createBrowserRouter([
           {
             path: 'sales/create',
             Component: CreateSalePage,
+          },
+          {
+            Component: () => <ProtectedRoute allowedRoles={['admin']} />,
+            children: [
+              {
+                path: 'users/create',
+                Component: CreateUserPage,
+              },
+            ],
           },
           {
             path: 'not-authorized',
